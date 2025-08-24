@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISUS by Jihyun</title>
+    <!-- Google Fonts for the title -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #f5e7f7, #eaf5f4, #f0e3ff, #fbe7fc);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            transition: background 15s ease;
+            min-height: 100vh;
+        }
+
+        /* Animated Background */
+        @keyframes gradientBG {
+            0% { 
+                background-position: 0% 50%; 
+            }
+            50% { 
+                background-position: 100% 50%; 
+            }
+            100% { 
+                background-position: 0% 50%; 
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header (Fixed Navigation Bar) */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(162, 135, 199, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6b46c1;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6b46c1;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(107, 70, 193, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            box-shadow: 0 15px 35px rgba(107, 70, 193, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: floatIn 1.2s ease-out;
+            transition: all 0.4s ease;
+        }
+        
+        /* VISUS 박스에 마우스 오버 효과 추가 */
+        .hero-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(107, 70, 193, 0.3);
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #6b46c1;
+            text-shadow: 0 2px 10px rgba(107, 70, 193, 0.3);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #7c3aed;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, #a78bfa, #c084fc);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(167, 139, 250, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(167, 139, 250, 0.4);
+            background: linear-gradient(135deg, #c084fc, #a78bfa);
+        }
+
+        /* General Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-bg {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            margin: 2rem 0;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(107, 70, 193, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #6b46c1;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #a78bfa, #c084fc);
+            border-radius: 2px;
+        }
+
+        /* Profile Section */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #fde2e4, #e2ece9);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.2);
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+        }
+
+        .info-card h3 {
+            color: #6b46c1;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .basic-info {
+            background: linear-gradient(135deg, #a78bfa, #c084fc);
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 25px rgba(167, 139, 250, 0.3);
+        }
+
+        .basic-info h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .tools-highlight {
+            background: linear-gradient(135deg, #6b46c1, #8b5cf6);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 8px 25px rgba(107, 70, 193, 0.3);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tool-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-activity {
+            margin-top: 1rem;
+        }
+
+        .activity-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-section h4 {
+            color: #6b46c1;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(167, 139, 250, 0.3);
+        }
+
+        .activity-section p,
+        .info-card.certificate p {
+            font-size: 0.9rem;
+        }
+        
+        .info-card.education {
+            line-height: 1.4;
+        }
+        .info-card.education p {
+            font-size: 0.9rem;
+            color: #4a4a4a;
+        }
+        .info-card.education strong {
+            font-size: 1rem;
+            color: #4a4a4a;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(167, 139, 250, 0.3);
+        }
+
+        /* Portfolio Section */
+        .portfolio-video-highlight {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            margin-bottom: 3rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(107, 70, 193, 0.3);
+        }
+
+        .portfolio-video-highlight iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .portfolio-description-box {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 25px rgba(107, 70, 193, 0.1);
+            text-align: center;
+        }
+        
+        .portfolio-description-box h3 {
+            font-family: 'Nanum+Myeongjo', serif;
+            font-size: 2.2rem;
+            color: #6b46c1;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-style: italic;
+        }
+        
+        .portfolio-description-box .meta {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-description-box .main-description {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+        }
+        
+        .portfolio-description-box .sub-description {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: block;
+        }
+        
+        .portfolio-description-box .sub-description-2 {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: block;
+        }
+        
+        /* 마우스 오버 안내 문구 스타일 */
+        #hover-instruction {
+            display: block;
+            text-align: left; /* 왼쪽 정렬로 수정 */
+            color: #71717a; /* Tailwind's gray-500 */
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-top: 1rem;
+            padding-left: 20px; /* 왼쪽 여백 추가 */
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem; /* 마우스 오버 안내 문구와의 간격 조정 */
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(107, 70, 193, 0.15); 
+        }
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(167, 139, 250, 0.4); 
+        }
+
+        .portfolio-media {
+            width: 100%;
+            height: 300px; /* 이미지 컨테이너 높이 변경 */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 이미지 전환 효과를 위한 CSS 추가 */
+        .portfolio-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .portfolio-media .hover-image {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .portfolio-media:hover .hover-image {
+            opacity: 1;
+        }
+
+        .media-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(167, 139, 250, 0.9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            color: #6b46c1;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Portfolio 텍스트 크기 조정 */
+        .portfolio-content p {
+            font-size: 0.85rem; /* 폰트 크기 줄임 */
+        }
+
+        /* Guestbook Section */
+        .guestbook-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .guestbook-form {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            box-shadow: 0 8px 25px rgba(107, 70, 193, 0.1);
+        }
+
+        .guestbook-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .guestbook-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #6b46c1;
+            font-size: 0.9rem;
+        }
+
+        .guestbook-form input,
+        .guestbook-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.8);
+        }
+
+        .guestbook-form textarea {
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #a78bfa, #c084fc);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(167, 139, 250, 0.4);
+        }
+
+        .guestbook-list {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            box-shadow: 0 8px 25px rgba(107, 70, 193, 0.1);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .guestbook-comment {
+            border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+            padding: 1rem 0;
+        }
+
+        .guestbook-comment:last-child {
+            border-bottom: none;
+        }
+        
+        .guestbook-comment .meta {
+            font-size: 0.85rem;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.2rem;
+        }
+        
+        .guestbook-comment .meta strong {
+            color: #6b46c1;
+            font-weight: 600;
+        }
+        
+        .guestbook-comment p {
+            margin: 0;
+            color: #4a4a4a;
+            word-wrap: break-word;
+            font-size: 0.9rem;
+        }
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+        .pagination-controls button {
+            background: linear-gradient(135deg, #a78bfa, #c084fc);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .pagination-controls button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .pagination-controls button:hover:enabled {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(167, 139, 250, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(107, 70, 193, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            backdrop-filter: blur(15px);
+        }
+
+        /* Floating Shapes for Background Effect */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            25% { transform: translateY(-120px) rotate(90deg); opacity: 0.3; }
+            50% { transform: translateY(-250px) rotate(180deg); opacity: 0.8; }
+            75% { transform: translateY(-120px) rotate(270deg); opacity: 0.4; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content {
+                margin: 0 1rem;
+                padding: 2.5rem 2rem;
+            }
+            
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .skills-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .guestbook-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">VISUS by Jihyun</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#guestbook">Guestbook</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>VISUS</h1>
+            <p>3D Design Portfolio by Jihyun</p>
+            <a href="#portfolio" class="cta-button">View Works</a>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <div class="section-bg">
+                <h2>Portfolio</h2>
+                
+                <!-- Main video highlight section -->
+                <div class="portfolio-video-highlight">
+                    <!-- Replace the iframe with your main portfolio video's embed code from YouTube, Vimeo, etc. -->
+                    <iframe 
+                        src="https://www.youtube.com/embed/befOmHpi-PU" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <!-- New description box for the main video -->
+                <div class="portfolio-description-box">
+                    <h3>여행</h3>
+                    <p class="meta">제작기간: 7-8M (Modeling 3M, Texturing 2M, Lighting&Rendeling 2M, 편집 및 수정 2Week)</p>
+                    <p class="main-description">
+                        <strong>헤맨 만큼 내 땅이다.</strong>
+                    </p>
+                    <p class="sub-description">
+                        인생을 낯선 여행에 비유하여, 넓게 둘러가는 여정일수록<br>
+                        진정한 나만의 공간을 만들어가며 행복을 찾을 수 있다는 의미를 담은 작품입니다.<br>
+                        <strong>새로운 장소로 떠나는 설렘</strong>과 <strong>시간이 흐를수록 깊어지는 감정</strong>을 시각적으로 표현하고자 했습니다.
+                    </p>
+                    <p class="sub-description" style="margin-top: 10px;">
+                        2D 텍스트는 '여행, 운행, 비행, 요행'의 행자돌림을 이용해 리듬감을 표현하며,<br>
+                        인생의 긴 여행 종착지는 결국 <strong>행복을 바라는 요행</strong>으로 귀결된다는 의미를 살리고자 하였다.
+                    </p>
+                </div>
+                
+                <!-- 마우스 오버 안내 문구 -->
+                <p id="hover-instruction">* 이미지에 마우스를 올려주세요.</p>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-media">
+                            <!-- 스테이션 이미지 -->
+                            <img src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/station_full_output.11_final.png" alt="스테이션 이미지 1">
+                            <img class="hover-image" src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/station_page.png" alt="스테이션 이미지 2">
+                            <span class="media-type">IMAGE</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>스테이션</h3>
+                            <p style="font-size: 0.85rem;">
+                                <strong>3D 모델링</strong>과 <strong>사실적인 텍스처</strong>로 현실성을 높였습니다.<br>
+                                Nuke를 통한 <strong>라이팅 보정</strong>으로,<br>
+                                비교적 채도가 낮은 차분한 분위기의 이른저녁 시간대에서<br>
+                                해질녘 노을의 강렬한 라이팅으로 시각적인 분위기를 연출했습니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-media">
+                            <!-- 상점 무드등 이미지 (경로 수정) -->
+                            <img src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/store_output.10_final.png" alt="상점 무드등 이미지">
+                            <img class="hover-image" src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/moodlight_page.png" alt="상점 무드등 이미지 2">
+                            <span class="media-type">IMAGE</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>상점 무드등</h3>
+                            <p style="font-size: 0.85rem;">
+                                밝은 해질녘 노을빛과 대비되는 <strong>대비되는 실내</strong>로,<br>
+                                아기자기하고 디테일한 무드등에 시선을 집중시키고자 했습니다.<br>
+                                낡은 기차역과 미니어처 작업실 무드등이라는 독특하고 <br>
+                                디테일한 소품들로 <strong>전체적인 스토리</strong>를 더했습니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-media">
+                            <!-- 열차 승객 객실 이미지 -->
+                            <img src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/station_prop_02_output.11_final.png" alt="열차 승객 객실 이미지 1">
+                            <img class="hover-image" src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/train_page.png" alt="열차 승객 객실 이미지 2">
+                            <span class="media-type">IMAGE</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>열차 승객 객실</h3>
+                            <p style="font-size: 0.85rem;">
+                                책의 표면 질감 등을 사실적으로 표현하여 <br>
+                                손으로 만질 수 있을 듯한 리얼리티를 구현하고자 했습니다.<br>
+                                또한 창밖 풍경은 <strong>매치무브(matchmove) 기법</strong>을 활용하여 합성하고, <br>
+                                카메라 움직임으로 열차 덜컹임을 나타내 <strong>공간적 사실감</strong>을 더했습니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-media">
+                            <!-- 스카이 스테이션 이미지 -->
+                            <img src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/station_day_output.12_final.png" alt="스카이 스테이션 이미지 1">
+                            <img class="hover-image" src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/station_night_output.11_final.png" alt="스카이 스테이션 이미지 2">
+                            <span class="media-type">IMAGE</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>스카이 스테이션</h3>
+                            <p style="font-size: 0.85rem;">
+                                공중에 건설된 스테이션을 두 가지 시간대에 연출하였습니다.<br>
+                                저녁 장면은 석양빛으로 구조물의 디테일과 활기를 강조했고,<br>
+                                밤에는 네온과 조명으로 몽환적 분위기를 표현했습니다.<br>
+                                동일한 모델을 <strong>조명과 색채 효과의 변화</strong>를 통해 전혀 다른 서사와 정체성을 드러내며, <strong>시네마틱 연출력</strong>을 보여주는 것이 목표였습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-bg">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <span style="font-size: 3.5rem;">🧩</span>
+                        </div>
+                        <h3>3D Modeling</h3>
+                        <p><strong>Maya</strong><br>Hard Surface & Organic Modeling</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <span style="font-size: 3.5rem;">💡</span>
+                        </div>
+                        <h3>Rendering</h3>
+                        <p><strong>V-Ray</strong><br>Photorealistic Visualization</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <span style="font-size: 3.5rem;">🎨</span>
+                        </div>
+                        <h3>Texturing</h3>
+                        <p><strong>Adobe Substance Painter</strong><br>Material Creation</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <span style="font-size: 3.5rem;">🎬</span>
+                        </div>
+                        <h3>Post-Production</h3>
+                        <p><strong>Nuke</strong><br>Compositing & Color Grading</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="profile" class="section">
+        <div class="container">
+            <div class="section-bg">
+                <h2>Profile</h2>
+                <div class="profile-grid">
+                    <div class="profile-image">
+                        <!-- User's profile image -->
+                        <img src="https://raw.githubusercontent.com/jihyunfor/jihyunfor.github.io/main/profile.jpg" alt="김지현 프로필 사진">
+                    </div>
+                    <div class="profile-info">
+                        <div class="basic-info">
+                            <h3>Basic Information</h3>
+                            <p><strong>Name:</strong> 김지현 (Kim Ji Hyun)<br>
+                            <strong>Birth:</strong> 2001.09.06<br>
+                            <strong>Address:</strong> 대구시 북구</p>
+                        </div>
+                        
+                        <div class="tools-highlight">
+                            <h3>Main Tools</h3>
+                            <div class="tools-grid">
+                                <div class="tool-item">MAYA</div>
+                                <div class="tool-item">NUKE</div>
+                                <div class="tool-item">Substance Painter</div>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>About Me</h3>
+                            <p>시각적으로 오묘하고 신비로운 분위기를 연출하는 <strong>3D 환경 디자인</strong>을 전문으로 합니다. <br>독특한 질감과 조명을 활용하여 몰입감 있는 <strong>배경과 프랍</strong>을 제작하며, <br>관객에게 깊은 인상을 남기는 <strong>비주얼 스토리텔링</strong>을 구현하는 것을 추구합니다.</p>
+                        </div>
+                        
+                        <div class="info-card education">
+                            <h3>Education</h3>
+                            <p><strong>부경대학교</strong> (2020-2025)<br>
+                            <span style="font-size: 0.9rem;">행정복지학부 행정학 전공<br>
+                            사회복지트랙 복수전공<br>
+                            학점: 4.16/4.5</span></p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>사회활동</h3>
+                            <div class="social-activity">
+                                <div class="activity-section">
+                                    <h4>대외활동</h4>
+                                    <p>• 2021 부산도시공사 시민참여혁신단 [우수단원 표창]<br>
+                                    • 2022 공무원연금공단 홍보서포터즈 [최우수서포터즈/최우수팀]<br>
+                                    • 2022 부산시설공단 대학생홍보단 [최우수홍보단원/최우수팀]<br>
+                                    • 2022 부산광역시 문화재야행 사무국 피란수도 부산 문화재야행 기획단장</p>
+                                </div>
+
+                                <div class="activity-section">
+                                    <h4>봉사활동</h4>
+                                    <p>• 2021 부산 따뜻한 마음 봉사단 사무행정팀장 [국회의원상]<br>
+                                    • 2021 부산청년정책포럼 부산청년거버넌스 청:론 [우수상]<br>
+                                    • 2021 BNK 부산은행 B타민 금융교육 강사단<br>
+                                    • 2021 부산 스마트시티 챌린지 리빙랩 서포터즈 [대상/부산시장상]</p>
+                            </div>
+
+                            <div class="activity-section">
+                                <h4>아르바이트</h4>
+                                <p>• 2023.01~2023.05 중소벤처기업진흥공단 대구지부 사무보조원<br>
+                                • 2021.01~2021.02 칠곡 고용복지플러스센터 근로장학생</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>자격증</h3>
+                            <p>• GTQ 포토샵 (2021.03.19)<br>
+                            • 한국사능력검정시험 1급 (2022.02.25)<br>
+                            • 워드프로세서 1급 (2022.09.16)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guestbook" class="section">
+        <div class="container">
+            <div class="section-bg">
+                <h2>Guestbook</h2>
+                <div class="guestbook-wrapper">
+                    <!-- Guestbook Comments List -->
+                    <div class="guestbook-list" id="guestbook-list">
+                        <!-- Comments will be dynamically inserted here -->
+                        <p class="text-gray-500 text-center mt-4">아직 댓글이 없어요. 첫 번째 댓글을 남겨보세요!</p>
+                    </div>
+                    <div class="pagination-controls">
+                        <button id="prev-page" disabled>이전</button>
+                        <span id="page-info">1 / 1</span>
+                        <button id="next-page" disabled>다음</button>
+                    </div>
+                    <!-- Guestbook Form -->
+                    <div class="guestbook-form-container">
+                        <form id="guestbook-form" class="guestbook-form">
+                            <div class="form-group">
+                                <label for="guest-name">닉네임</label>
+                                <input type="text" id="guest-name" name="name" placeholder="닉네임 (선택)" maxlength="20">
+                            </div>
+                            <div class="form-group">
+                                <label for="guest-message">댓글</label>
+                                <textarea id="guest-message" name="message" rows="4" required placeholder="응원의 메시지를 남겨주세요." maxlength="200"></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">댓글 남기기</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 VISUS by Jihyun. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase 설정 정보
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let db;
+        let auth;
+        let allComments = []; // 전체 댓글을 저장하는 배열
+        let currentPage = 1; // 현재 페이지
+        const commentsPerPage = 10; // 한 페이지에 표시할 댓글 수
+        const guestbookList = document.getElementById('guestbook-list');
+        const prevButton = document.getElementById('prev-page');
+        const nextButton = document.getElementById('next-page');
+        const pageInfoSpan = document.getElementById('page-info');
+
+        // 사용자에게 메시지를 보여주는 커스텀 함수
+        function showMessage(message, duration = 3000) {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: rgba(50, 50, 50, 0.9);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                z-index: 2000;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+                font-size: 1rem;
+            `;
+            messageBox.textContent = message;
+            document.body.appendChild(messageBox);
+            
+            setTimeout(() => {
+                messageBox.style.opacity = '1';
+            }, 10); // Small delay to trigger transition
+            
+            setTimeout(() => {
+                messageBox.style.opacity = '0';
+                setTimeout(() => messageBox.remove(), 500); // Remove after fade-out
+            }, duration);
+        }
+
+        // 페이지네이션에 맞춰 댓글을 화면에 렌더링
+        function renderComments() {
+            if (!guestbookList) return;
+            guestbookList.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * commentsPerPage;
+            const endIndex = startIndex + commentsPerPage;
+            const commentsToRender = allComments.slice(startIndex, endIndex);
+
+            if (commentsToRender.length === 0) {
+                guestbookList.innerHTML = '<p class="text-gray-500 text-center mt-4">아직 댓글이 없어요. 첫 번째 댓글을 남겨보세요!</p>';
+            } else {
+                commentsToRender.forEach(comment => {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.className = 'guestbook-comment';
+                    
+                    const metaDiv = document.createElement('div');
+                    metaDiv.className = 'meta';
+                    
+                    const nameSpan = document.createElement('strong');
+                    nameSpan.textContent = comment.name || '익명';
+                    
+                    const dateSpan = document.createElement('span');
+                    const date = comment.timestamp ? new Date(comment.timestamp) : new Date();
+                    dateSpan.textContent = date.toLocaleDateString('ko-KR') + ' ' + date.toLocaleTimeString('ko-KR');
+
+                    metaDiv.appendChild(nameSpan);
+                    metaDiv.appendChild(dateSpan);
+                    
+                    const messageP = document.createElement('p');
+                    messageP.textContent = comment.message;
+                    
+                    commentDiv.appendChild(metaDiv);
+                    commentDiv.appendChild(messageP);
+                    guestbookList.appendChild(commentDiv);
+                });
+            }
+
+            updatePaginationControls();
+        }
+
+        // 페이지네이션 버튼 상태 및 페이지 정보 업데이트
+        function updatePaginationControls() {
+            const totalPages = Math.ceil(allComments.length / commentsPerPage);
+            pageInfoSpan.textContent = `${currentPage} / ${totalPages > 0 ? totalPages : 1}`;
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage >= totalPages;
+        }
+
+        // Firestore 실시간 리스너 설정
+        async function setupGuestbookListener() {
+            if (!db) {
+                console.error("Firestore is not initialized.");
+                return;
+            }
+
+            const guestbookRef = collection(db, `artifacts/${appId}/public/data/guestbook`);
+            
+            onSnapshot(guestbookRef, (snapshot) => {
+                const fetchedComments = [];
+                snapshot.forEach(doc => {
+                    // Firestore timestamp 객체를 Date 객체로 변환하여 저장
+                    const data = doc.data();
+                    fetchedComments.push({ ...data, timestamp: data.timestamp?.toDate().getTime() });
+                });
+
+                // 타임스탬프 기준으로 최신순 정렬
+                allComments = fetchedComments.sort((a, b) => b.timestamp - a.timestamp);
+                renderComments();
+            }, (error) => {
+                console.error("Error fetching documents: ", error);
+                showMessage("댓글을 불러오는 데 실패했습니다. 잠시 후 다시 시도해주세요.");
+            });
+        }
+        
+        // 방명록 폼 제출 처리
+        async function handleGuestbookSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = form.querySelector('#guest-name').value || '익명';
+            const message = form.querySelector('#guest-message').value;
+            const submitBtn = form.querySelector('.submit-btn');
+
+            if (message.trim() === '') {
+                showMessage("메시지를 입력해주세요.");
+                return;
+            }
+
+            submitBtn.innerHTML = '전송 중...';
+            submitBtn.disabled = true;
+
+            const newComment = {
+                name,
+                message,
+                timestamp: new Date()
+            };
+            
+            try {
+                const guestbookRef = collection(db, `artifacts/${appId}/public/data/guestbook`);
+                await addDoc(guestbookRef, newComment);
+                form.reset();
+                showMessage("메시지가 성공적으로 전송되었습니다!");
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                showMessage("메시지 전송에 실패했습니다. 다시 시도해주세요.");
+            } finally {
+                submitBtn.innerHTML = '댓글 남기기';
+                submitBtn.disabled = false;
+            }
+        }
+        
+        // 메인 진입점
+        window.onload = async function() {
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Header effect on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.box-shadow = '0 5px 25px rgba(107, 70, 193, 0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.9)';
+                    header.style.box-shadow = 'none';
+                }
+            });
+
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.animation = 'floatIn 0.8s ease-out forwards';
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.skill-card, .portfolio-item, .info-card, .guestbook-comment').forEach(item => {
+                observer.observe(item);
+            });
+
+            // Replace alert with custom message box
+            window.alert = showMessage;
+
+            // Set up form submission handler for guestbook
+            const guestbookForm = document.getElementById('guestbook-form');
+            if (guestbookForm) {
+                guestbookForm.addEventListener('submit', handleGuestbookSubmit);
+            }
+            
+            // Firebase 초기화 및 게스트북 로직
+            try {
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                // 익명 로그인 시도
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                    console.log("Signed in with custom token.");
+                } else {
+                    await signInAnonymously(auth);
+                    console.log("Anonymously signed in.");
+                }
+                
+                // 로그인 후 게스트북 리스너 설정
+                // 이전에 로그인 성공 여부에 따라 분기했던 로직을 수정
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        setupGuestbookListener();
+                    }
+                });
+
+            } catch (e) {
+                console.error("Error during Firebase initialization or sign-in:", e);
+                showMessage("데이터베이스 연결에 문제가 발생했습니다. 페이지를 새로고침해주세요.");
+            }
+        };
+    </script>
+</body>
+</html>
